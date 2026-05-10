@@ -1,72 +1,86 @@
-@config "../../tailwind.config.ts";
+@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  body {
-    @apply font-body text-chalet-brown bg-cream;
-  }
-
-  h1, h2, h3, h4 {
-    @apply font-display;
-  }
-
-  ::selection {
-    @apply bg-chalet-gold/30 text-chalet-brown;
-  }
+@theme {
+  --color-cream: #F5F0E8;
+  --color-cream-dark: #E8E0D0;
+  --color-chalet-brown: #3B2A1A;
+  --color-chalet-wood: #6B4C33;
+  --color-chalet-warm: #8B6914;
+  --color-chalet-gold: #C9A54E;
+  --color-chalet-stone: #9B8B78;
+  --color-chalet-dark: #1A1410;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --animate-fade-in: fadeIn 0.8s ease-out forwards;
+  --animate-slide-up: slideUp 0.8s ease-out forwards;
 }
 
-@layer components {
-  .section-padding {
-    @apply px-6 md:px-12 lg:px-24 py-16 md:py-24;
-  }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-  .hero-gradient {
-    background: linear-gradient(
-      180deg,
-      rgba(26, 20, 16, 0.6) 0%,
-      rgba(26, 20, 16, 0.3) 40%,
-      rgba(26, 20, 16, 0.5) 100%
-    );
-  }
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-  .gold-line {
-    @apply w-16 h-[2px] bg-chalet-gold;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
 
-  .card-hover {
-    @apply transition-all duration-500 hover:shadow-2xl hover:-translate-y-1;
-  }
+body {
+  font-family: var(--font-body);
+  color: var(--color-chalet-brown);
+  background: var(--color-cream);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: rgb(201 165 78 / 0.3);
+  color: var(--color-chalet-brown);
+}
+
+.hero-gradient {
+  background: linear-gradient(
+    180deg,
+    rgba(26, 20, 16, 0.6) 0%,
+    rgba(26, 20, 16, 0.3) 40%,
+    rgba(26, 20, 16, 0.5) 100%
+  );
+}
+
+.gold-line {
+  width: 64px;
+  height: 2px;
+  background: var(--color-chalet-gold);
+}
+
+.card-hover {
+  transition: all 0.5s;
+}
+.card-hover:hover {
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  transform: translateY(-4px);
 }
 
 .lightbox-overlay {
-  @apply fixed inset-0 z-50 bg-black/95 flex items-center justify-center;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgb(0 0 0 / 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   backdrop-filter: blur(10px);
 }
 
-.grain::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  z-index: 9999;
-}
-
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { @apply bg-cream; }
-::-webkit-scrollbar-thumb { @apply bg-chalet-stone/40 rounded-full; }
-::-webkit-scrollbar-thumb:hover { @apply bg-chalet-stone/60; }
+::-webkit-scrollbar-track { background: var(--color-cream); }
+::-webkit-scrollbar-thumb { background: rgb(155 139 120 / 0.4); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: rgb(155 139 120 / 0.6); }
