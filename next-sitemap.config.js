@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://www.le-solerey.com",
+  siteUrl: "https://www.solerey.com",
   generateRobotsTxt: false, // We have a manual one
   changefreq: "weekly",
   priority: 0.7,

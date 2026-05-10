@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.le-solerey.com/sitemap.xml
+Sitemap: https://www.solerey.com/sitemap.xml
