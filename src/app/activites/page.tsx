@@ -194,7 +194,7 @@ export default function ActivitesPage() {
           <p className="text-sm tracking-[0.3em] uppercase text-chalet-gold mb-4">
             Vallée de Chamonix
           </p>
-          <h1 className="font-display text-4xl md:text-6xl mb-4">
+          <h1 className="font-display text-4xl md:text-6xl mb-6">
             Activités depuis le chalet
           </h1>
           <p className="text-cream/50 max-w-2xl mx-auto">
@@ -208,7 +208,7 @@ export default function ActivitesPage() {
       <section className="section-padding bg-cream">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
-            <p className="text-sm tracking-[0.3em] uppercase text-chalet-gold mb-3">
+            <p className="text-sm tracking-[0.3em] uppercase text-chalet-gold mb-4">
               À deux pas du chalet
             </p>
             <h2 className="font-display text-3xl">Activités du Lavancher</h2>
@@ -226,7 +226,7 @@ export default function ActivitesPage() {
       <section className="section-padding bg-cream-dark">
         <div className="max-w-6xl mx-auto">
           <div className="mb-8 max-w-3xl">
-            <p className="text-sm tracking-[0.3em] uppercase text-chalet-gold mb-3">
+            <p className="text-sm tracking-[0.3em] uppercase text-chalet-gold mb-4">
               Nos coups de cœur
             </p>
             <h2 className="font-display text-3xl mb-6">

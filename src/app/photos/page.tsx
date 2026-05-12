@@ -72,7 +72,7 @@ export default function PhotosPage() {
       <section className="section-padding bg-chalet-dark text-cream pt-32 pb-12">
         <div className="max-w-5xl mx-auto text-center">
           <p className="text-sm tracking-[0.3em] uppercase text-chalet-gold mb-4">Galerie</p>
-          <h1 className="font-display text-4xl md:text-6xl mb-4">Photos du Solerey</h1>
+          <h1 className="font-display text-4xl md:text-6xl mb-6">Photos du Solerey</h1>
           <p className="text-cream/50 text-sm">
             Chalet de charme 400 m² — 8 chambres — Chamonix-Mont-Blanc
           </p>

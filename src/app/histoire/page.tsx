@@ -32,7 +32,7 @@ export default function HistoirePage() {
       <section className="section-padding bg-cream">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <p className="text-sm tracking-[0.3em] uppercase text-chalet-gold mb-3">1803</p>
+            <p className="text-sm tracking-[0.3em] uppercase text-chalet-gold mb-4">1803</p>
             <h2 className="font-display text-3xl mb-6">Construction de la ferme</h2>
             <div className="gold-line mb-8" />
             <p className="text-chalet-brown/80 leading-relaxed mb-4">
@@ -68,7 +68,7 @@ export default function HistoirePage() {
       <section className="section-padding bg-cream-dark">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-sm tracking-[0.3em] uppercase text-chalet-gold mb-3">Après 1900</p>
+            <p className="text-sm tracking-[0.3em] uppercase text-chalet-gold mb-4">Après 1900</p>
             <h2 className="font-display text-3xl">L&apos;essor du tourisme</h2>
             <div className="gold-line mx-auto mt-6" />
           </div>
