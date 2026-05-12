@@ -26,7 +26,7 @@ const LAVANCHER_ACTIVITIES: Activity[] = [
     duration: "1h15 (aller)",
     description:
       "La randonnée commence depuis le sommet du Lavancher, un peu plus haut que les Chalets Philippe. À la fin de la promenade, vous trouverez une buvette offrant une vue magnifique sur les aiguilles.",
-    image: "/images/activites/chapeau.png",
+    image: "/images/activites/chapeau.jpg",
     imageAlt: "Randonnée du Chapeau depuis le Lavancher, Chamonix",
     difficulty: "easy",
   },

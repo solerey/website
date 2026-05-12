@@ -89,7 +89,7 @@ export default function HistoirePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="relative aspect-[3/4] rounded-sm overflow-hidden">
               <Image
-                src="/images/histoire/hotel-beau-sejour.png"
+                src="/images/histoire/hotel-beau-sejour.jpg"
                 alt="L'hôtel Beau-Séjour au Lavancher, Chamonix"
                 fill
                 className="object-cover"
@@ -97,7 +97,7 @@ export default function HistoirePage() {
             </div>
             <div className="relative aspect-[3/4] rounded-sm overflow-hidden">
               <Image
-                src="/images/histoire/anciens-proprietaires.png"
+                src="/images/histoire/anciens-proprietaires.jpg"
                 alt="Anciens propriétaires de la ferme Le Solerey"
                 fill
                 className="object-cover"
@@ -105,7 +105,7 @@ export default function HistoirePage() {
             </div>
             <div className="relative aspect-[3/4] rounded-sm overflow-hidden">
               <Image
-                src="/images/histoire/lavancher-ancien-1.png"
+                src="/images/histoire/lavancher-ancien-1.jpg"
                 alt="Le Lavancher à l'époque, vue historique"
                 fill
                 className="object-cover"
@@ -113,7 +113,7 @@ export default function HistoirePage() {
             </div>
             <div className="relative aspect-[3/4] rounded-sm overflow-hidden">
               <Image
-                src="/images/histoire/lavancher-ancien-2.png"
+                src="/images/histoire/lavancher-ancien-2.jpg"
                 alt="Le village du Lavancher historique"
                 fill
                 className="object-cover"
