@@ -82,25 +82,32 @@ export default function PhotosPage() {
       {/* Gallery Grid */}
       <section className="section-padding bg-cream">
         <div className="max-w-6xl mx-auto">
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-            {PHOTOS.map((photo, i) => (
-              <button
-                key={i}
-                onClick={() => openLightbox(i)}
-                className="block w-full overflow-hidden rounded-sm group cursor-pointer break-inside-avoid"
-              >
-                <div className="relative aspect-auto">
+          <div
+            className="grid grid-cols-2 md:grid-cols-6 gap-1"
+            style={{ gridAutoRows: "180px" }}
+          >
+            {PHOTOS.map((photo, i) => {
+              const pos = i % 5;
+              const span = pos === 0
+                ? "col-span-1 row-span-1 md:col-span-4 md:row-span-2"
+                : "col-span-1 row-span-1 md:col-span-2 md:row-span-2";
+              return (
+                <button
+                  key={i}
+                  onClick={() => openLightbox(i)}
+                  className={`${span} relative overflow-hidden group cursor-pointer`}
+                >
                   <Image
                     src={photo.src}
                     alt={ALT_TEXTS[i] || photo.alt}
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                   />
-                  <div className="absolute inset-0 bg-chalet-dark/0 group-hover:bg-chalet-dark/10 transition-colors duration-500" />
-                </div>
-              </button>
-            ))}
+                  <div className="absolute inset-0 bg-chalet-dark/0 group-hover:bg-chalet-dark/20 transition-colors duration-500" />
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -1,0 +1,176 @@
+<style>
+  .gallery-section { margin-bottom: 2rem; }
+
+  /* Option A - Masonry CSS columns */
+  .masonry {
+    columns: 3;
+    column-gap: 8px;
+  }
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+  .masonry-item img { width: 100%; display: block; transition: transform 0.4s; }
+  .masonry-item:hover img { transform: scale(1.04); }
+
+  /* Option B - Editorial grid */
+  .editorial {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 140px;
+    gap: 8px;
+  }
+  .ed-sm  { grid-column: span 2; grid-row: span 1; }
+  .ed-md  { grid-column: span 3; grid-row: span 2; }
+  .ed-lg  { grid-column: span 4; grid-row: span 2; }
+  .ed-xl  { grid-column: span 2; grid-row: span 2; }
+  .ed-sm2 { grid-column: span 3; grid-row: span 1; }
+  .editorial-item {
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+  .editorial-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; display: block; }
+  .editorial-item:hover img { transform: scale(1.05); }
+
+  /* Option C - Bento rows */
+  .bento { display: flex; flex-direction: column; gap: 8px; }
+  .bento-row { display: flex; gap: 8px; height: 200px; }
+  .bento-row.tall { height: 260px; }
+  .bento-item { overflow: hidden; cursor: pointer; flex: 1; position: relative; }
+  .bento-item.wide { flex: 2; }
+  .bento-item.narrow { flex: 0.7; }
+  .bento-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; display: block; }
+  .bento-item:hover img { transform: scale(1.05); }
+
+  /* Shared */
+  .preview-wrap {
+    background: #E8E0D0;
+    border-radius: 6px;
+    padding: 12px;
+    overflow: hidden;
+  }
+  .preview-header {
+    background: #1A1410;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 4px 4px 0 0;
+    margin-bottom: 12px;
+  }
+  .preview-header span { color: #C9A54E; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; }
+  .preview-title { color: #F5F0E8; font-size: 16px; font-style: italic; }
+
+  .tag { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+  .tag-green  { background: #d1fae5; color: #065f46; }
+  .tag-blue   { background: #dbeafe; color: #1e40af; }
+  .tag-orange { background: #fed7aa; color: #92400e; }
+</style>
+
+<h2>Mise en page de la galerie</h2>
+<p class="subtitle">Choisissez le style qui correspond le mieux au chalet Le Solerey</p>
+
+<div class="cards">
+
+  <!-- OPTION A -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="preview-header">
+        <span>Galerie</span>
+        <span class="preview-title" style="color:#F5F0E8;font-style:italic">Photos du Solerey</span>
+      </div>
+      <div class="preview-wrap">
+        <div class="masonry">
+          <div class="masonry-item"><img src="https://picsum.photos/seed/chalet1/300/400" /></div>
+          <div class="masonry-item"><img src="https://picsum.photos/seed/chalet2/300/200" /></div>
+          <div class="masonry-item"><img src="https://picsum.photos/seed/chalet3/300/250" /></div>
+          <div class="masonry-item"><img src="https://picsum.photos/seed/chalet4/300/350" /></div>
+          <div class="masonry-item"><img src="https://picsum.photos/seed/chalet5/300/220" /></div>
+          <div class="masonry-item"><img src="https://picsum.photos/seed/chalet6/300/300" /></div>
+          <div class="masonry-item"><img src="https://picsum.photos/seed/chalet7/300/180" /></div>
+          <div class="masonry-item"><img src="https://picsum.photos/seed/chalet8/300/280" /></div>
+          <div class="masonry-item"><img src="https://picsum.photos/seed/chalet9/300/320" /></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <h3 style="margin:0">A — Mosaïque libre</h3>
+        <span class="tag tag-green">Recommandé</span>
+      </div>
+      <p>Photos à leur ratio naturel, disposées en colonnes. Simple, élégant, met toutes les photos en valeur sans les rogner.</p>
+    </div>
+  </div>
+
+  <!-- OPTION B -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="preview-header">
+        <span>Galerie</span>
+        <span class="preview-title" style="color:#F5F0E8;font-style:italic">Photos du Solerey</span>
+      </div>
+      <div class="preview-wrap">
+        <div class="editorial">
+          <div class="editorial-item ed-lg"><img src="https://picsum.photos/seed/ed1/600/300" /></div>
+          <div class="editorial-item ed-xl"><img src="https://picsum.photos/seed/ed2/300/300" /></div>
+          <div class="editorial-item ed-sm"><img src="https://picsum.photos/seed/ed3/200/140" /></div>
+          <div class="editorial-item ed-sm"><img src="https://picsum.photos/seed/ed4/200/140" /></div>
+          <div class="editorial-item ed-sm"><img src="https://picsum.photos/seed/ed5/200/140" /></div>
+          <div class="editorial-item ed-md"><img src="https://picsum.photos/seed/ed6/400/280" /></div>
+          <div class="editorial-item ed-sm2"><img src="https://picsum.photos/seed/ed7/400/140" /></div>
+          <div class="editorial-item ed-sm2"><img src="https://picsum.photos/seed/ed8/400/140" /></div>
+          <div class="editorial-item ed-md"><img src="https://picsum.photos/seed/ed9/400/280" /></div>
+          <div class="editorial-item ed-sm"><img src="https://picsum.photos/seed/ed10/200/140" /></div>
+          <div class="editorial-item ed-sm"><img src="https://picsum.photos/seed/ed11/200/140" /></div>
+          <div class="editorial-item ed-xl"><img src="https://picsum.photos/seed/ed12/300/280" /></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <h3 style="margin:0">B — Grille éditoriale</h3>
+        <span class="tag tag-blue">Dynamique</span>
+      </div>
+      <p>Certaines photos mises en avant avec plus d'espace. Style magazine haut de gamme, mais les photos sont rognées pour s'adapter à la grille.</p>
+    </div>
+  </div>
+
+  <!-- OPTION C -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="preview-header">
+        <span>Galerie</span>
+        <span class="preview-title" style="color:#F5F0E8;font-style:italic">Photos du Solerey</span>
+      </div>
+      <div class="preview-wrap">
+        <div class="bento">
+          <div class="bento-row tall">
+            <div class="bento-item wide"><img src="https://picsum.photos/seed/b1/600/260" /></div>
+            <div class="bento-item"><img src="https://picsum.photos/seed/b2/300/260" /></div>
+          </div>
+          <div class="bento-row">
+            <div class="bento-item narrow"><img src="https://picsum.photos/seed/b3/200/200" /></div>
+            <div class="bento-item wide"><img src="https://picsum.photos/seed/b4/500/200" /></div>
+          </div>
+          <div class="bento-row">
+            <div class="bento-item"><img src="https://picsum.photos/seed/b5/300/200" /></div>
+            <div class="bento-item"><img src="https://picsum.photos/seed/b6/300/200" /></div>
+            <div class="bento-item narrow"><img src="https://picsum.photos/seed/b7/200/200" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <h3 style="margin:0">C — Bento / rangées</h3>
+        <span class="tag tag-orange">Tendance</span>
+      </div>
+      <p>Rangées alternant une grande photo et des petites. Look moderne et luxe, mais nécessite de choisir quelles photos vont où.</p>
+    </div>
+  </div>
+
+</div>

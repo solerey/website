@@ -1,0 +1,135 @@
+<style>
+  /* Shared preview shell */
+  .preview-shell {
+    background: #1A1410;
+    border-radius: 6px 6px 0 0;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .preview-shell span { color: #C9A54E; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; }
+  .preview-body { background: #F5F0E8; padding: 10px; border-radius: 0 0 6px 6px; }
+
+  /* Option A1 — grille uniforme 3 colonnes */
+  .grid-uniform {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+  }
+  .grid-item {
+    aspect-ratio: 3/2;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+  .grid-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; display: block; }
+  .grid-item:hover img { transform: scale(1.06); }
+  .grid-item::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(26,20,16,0);
+    transition: background 0.4s;
+  }
+  .grid-item:hover::after { background: rgba(26,20,16,0.15); }
+
+  /* Option A2 — grille avec photos vedettes */
+  .grid-featured {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 120px;
+    gap: 4px;
+  }
+  .gf-sm  { grid-column: span 2; grid-row: span 2; }
+  .gf-lg  { grid-column: span 4; grid-row: span 2; }
+  .gf-xl  { grid-column: span 3; grid-row: span 3; }
+  .gf-md  { grid-column: span 3; grid-row: span 2; }
+  .gf-xs  { grid-column: span 3; grid-row: span 1; }
+  .grid-featured-item {
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+  .grid-featured-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; display: block; }
+  .grid-featured-item:hover img { transform: scale(1.06); }
+  .grid-featured-item::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(26,20,16,0);
+    transition: background 0.4s;
+  }
+  .grid-featured-item:hover::after { background: rgba(26,20,16,0.15); }
+
+  .tag { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+  .tag-green  { background: #d1fae5; color: #065f46; }
+  .tag-purple { background: #ede9fe; color: #5b21b6; }
+
+  .note { font-size: 11px; color: #9B8B78; margin-top: 6px; font-style: italic; }
+</style>
+
+<h2>Mosaïque — quel rendu réel ?</h2>
+<p class="subtitle">Toutes vos photos sont au même format (3:2). Voici les deux styles possibles.</p>
+
+<div class="cards">
+
+  <!-- A1 — grille uniforme -->
+  <div class="card" data-choice="a1" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="preview-shell"><span>Photos du Solerey</span></div>
+      <div class="preview-body">
+        <div class="grid-uniform">
+          <div class="grid-item"><img src="https://picsum.photos/seed/s1/600/400" /></div>
+          <div class="grid-item"><img src="https://picsum.photos/seed/s2/600/400" /></div>
+          <div class="grid-item"><img src="https://picsum.photos/seed/s3/600/400" /></div>
+          <div class="grid-item"><img src="https://picsum.photos/seed/s4/600/400" /></div>
+          <div class="grid-item"><img src="https://picsum.photos/seed/s5/600/400" /></div>
+          <div class="grid-item"><img src="https://picsum.photos/seed/s6/600/400" /></div>
+          <div class="grid-item"><img src="https://picsum.photos/seed/s7/600/400" /></div>
+          <div class="grid-item"><img src="https://picsum.photos/seed/s8/600/400" /></div>
+          <div class="grid-item"><img src="https://picsum.photos/seed/s9/600/400" /></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <h3 style="margin:0">A1 — Grille uniforme</h3>
+        <span class="tag tag-green">Épuré</span>
+      </div>
+      <p>Toutes les photos à la même taille, gap fin de 4px. Style haut de gamme, chaque photo a le même poids visuel.</p>
+      <p class="note">Comme Instagram / Airbnb — propre et professionnel</p>
+    </div>
+  </div>
+
+  <!-- A2 — grille avec vedettes -->
+  <div class="card" data-choice="a2" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="preview-shell"><span>Photos du Solerey</span></div>
+      <div class="preview-body">
+        <div class="grid-featured">
+          <div class="grid-featured-item gf-lg"><img src="https://picsum.photos/seed/f1/800/400" /></div>
+          <div class="grid-featured-item gf-sm"><img src="https://picsum.photos/seed/f2/300/240" /></div>
+          <div class="grid-featured-item gf-sm"><img src="https://picsum.photos/seed/f3/300/120" /></div>
+          <div class="grid-featured-item gf-sm"><img src="https://picsum.photos/seed/f4/300/120" /></div>
+          <div class="grid-featured-item gf-md"><img src="https://picsum.photos/seed/f5/500/240" /></div>
+          <div class="grid-featured-item gf-md"><img src="https://picsum.photos/seed/f6/500/240" /></div>
+          <div class="grid-featured-item gf-sm"><img src="https://picsum.photos/seed/f7/300/240" /></div>
+          <div class="grid-featured-item gf-xl"><img src="https://picsum.photos/seed/f8/600/360" /></div>
+          <div class="grid-featured-item gf-xs"><img src="https://picsum.photos/seed/f9/300/120" /></div>
+          <div class="grid-featured-item gf-xs"><img src="https://picsum.photos/seed/f10/300/120" /></div>
+          <div class="grid-featured-item gf-xs"><img src="https://picsum.photos/seed/f11/300/120" /></div>
+          <div class="grid-featured-item gf-xs"><img src="https://picsum.photos/seed/f12/300/120" /></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <h3 style="margin:0">A2 — Grille avec vedettes</h3>
+        <span class="tag tag-purple">Dynamique</span>
+      </div>
+      <p>Certaines photos prennent plus de place selon un pattern fixe. Rythme visuel plus riche et éditorial.</p>
+      <p class="note">Comme un site de luxe immobilier ou d'hôtel</p>
+    </div>
+  </div>
+
+</div>
