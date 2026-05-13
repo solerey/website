@@ -121,6 +121,8 @@ export default async function ActivitesPage({
       imageAlt: "Randonnée du Chapeau depuis le Lavancher, Chamonix",
       difficulty: "easy",
       difficultyLabel: difficultyLabel("easy"),
+      link: "https://www.chamonix.com/randonnees-en-famille/randonnee-point-de-vue-du-chapeau-depuis-les-tines",
+      bookLabel: t("more_info"),
     },
     {
       title: t("act_philippe_title"),
@@ -147,6 +149,8 @@ export default async function ActivitesPage({
       imageAlt: "Le Paradis des Praz, randonnée familiale Chamonix",
       difficulty: "easy",
       difficultyLabel: difficultyLabel("easy"),
+      link: "https://www.chamonix.com/escapades-a-pied-randonnees-douces/balade-au-paradis-des-praz",
+      bookLabel: t("more_info"),
     },
     {
       title: t("act_gorges_title"),
@@ -157,6 +161,8 @@ export default async function ActivitesPage({
       imageAlt: "Les gorges de l'Arveyron, randonnée et cascade Chamonix",
       difficulty: "easy",
       difficultyLabel: difficultyLabel("easy"),
+      link: "https://www.chamonix.com/escapades-a-pied-randonnees-douces/balade-des-sources-de-l-arveyron",
+      bookLabel: t("more_info"),
     },
   ];
 
