@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { getAlternates } from "@/i18n/alternates";
 
 const PREVIEW_PHOTOS = [
   { src: "/images/gallery/photo-4.jpg", alt: "Salon principal chalet Le Solerey Chamonix avec cheminée" },
@@ -20,7 +21,7 @@ export async function generateMetadata({
   return {
     title: t("home_title"),
     description: t("home_description"),
-    alternates: { canonical: `https://www.solerey.com${locale === "fr" ? "" : `/${locale}`}` },
+    alternates: getAlternates("home"),
   };
 }
 

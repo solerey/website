@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { getAlternates } from "@/i18n/alternates";
 
 export async function generateMetadata({
   params,
@@ -12,7 +13,7 @@ export async function generateMetadata({
   return {
     title: t("history_title"),
     description: t("history_description"),
-    alternates: { canonical: `https://www.solerey.com${locale === "fr" ? "" : `/${locale}`}/histoire` },
+    alternates: getAlternates("histoire"),
   };
 }
 

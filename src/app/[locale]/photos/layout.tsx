@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { getAlternates } from "@/i18n/alternates";
 
 export async function generateMetadata({
   params,
@@ -11,6 +12,7 @@ export async function generateMetadata({
   return {
     title: t("photos_title"),
     description: t("photos_description"),
+    alternates: getAlternates("photos"),
   };
 }
 
