@@ -1,14 +1,7 @@
+import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-
-const FEATURES = [
-  { icon: "🏠", label: "400 m²", detail: "de surface habitable" },
-  { icon: "🛏️", label: "8 chambres", detail: "jusqu'à 14 personnes" },
-  { icon: "🧖", label: "Sauna", detail: "privatif" },
-  { icon: "🎱", label: "Billard", detail: "salle dédiée" },
-  { icon: "🔥", label: "Cheminée", detail: "dans le salon principal" },
-  { icon: "⛷️", label: "10 min", detail: "des pistes de ski" },
-];
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 
 const PREVIEW_PHOTOS = [
   { src: "/images/gallery/photo-4.jpg", alt: "Salon principal chalet Le Solerey Chamonix avec cheminée" },
@@ -17,7 +10,37 @@ const PREVIEW_PHOTOS = [
   { src: "/images/gallery/photo-6.jpg", alt: "Cuisine équipée chalet Le Solerey Chamonix" },
 ];
 
-export default function Home() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "meta" });
+  return {
+    title: t("home_title"),
+    description: t("home_description"),
+    alternates: { canonical: `https://www.solerey.com${locale === "fr" ? "" : `/${locale}`}` },
+  };
+}
+
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "home" });
+
+  const FEATURES = [
+    { icon: "🏠", label: t("feature_surface_label"), detail: t("feature_surface_detail") },
+    { icon: "🛏️", label: t("feature_rooms_label"), detail: t("feature_rooms_detail") },
+    { icon: "🧖", label: t("feature_sauna_label"), detail: t("feature_sauna_detail") },
+    { icon: "🎱", label: t("feature_billiard_label"), detail: t("feature_billiard_detail") },
+    { icon: "🔥", label: t("feature_fireplace_label"), detail: t("feature_fireplace_detail") },
+    { icon: "⛷️", label: t("feature_ski_label"), detail: t("feature_ski_detail") },
+  ];
+
   return (
     <>
       {/* ── HERO ── */}
@@ -33,24 +56,24 @@ export default function Home() {
         <div className="hero-gradient absolute inset-0" />
         <div className="relative z-10 text-center text-cream px-6 max-w-4xl">
           <p className="text-sm tracking-[0.3em] uppercase text-chalet-gold mb-6 animate-fade-in">
-            Le Lavancher — Chamonix-Mont-Blanc
+            {t("hero_location")}
           </p>
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-medium mb-6 animate-slide-up">
             Le Solerey
           </h1>
           <div className="gold-line mx-auto mb-6" />
           <p className="font-display text-xl md:text-2xl italic text-cream/80 mb-8 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-            Le charme de la ferme, restaurée avec goût et confort
+            {t("hero_subtitle")}
           </p>
           <p className="text-cream/60 text-sm tracking-wider mb-10 animate-fade-in" style={{ animationDelay: "0.5s" }}>
-            14 personnes · 400 m² · 8 chambres · Sauna · Billard
+            {t("hero_specs")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: "0.7s" }}>
             <Link
               href="/photos"
               className="px-8 py-3.5 border border-cream/30 text-cream text-sm tracking-widest uppercase hover:bg-cream/10 transition-colors duration-300"
             >
-              Découvrir — 25 Photos
+              {t("hero_cta_photos")}
             </Link>
             <a
               href="https://www.airbnb.fr/rooms/1069918179722628241"
@@ -58,7 +81,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="px-8 py-3.5 bg-chalet-gold text-chalet-dark text-sm font-semibold tracking-widest uppercase hover:bg-chalet-gold/90 transition-colors duration-300"
             >
-              Réserver
+              {t("hero_cta_book")}
             </a>
           </div>
         </div>
@@ -75,8 +98,8 @@ export default function Home() {
       <section className="section-padding bg-cream">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-sm tracking-[0.3em] uppercase text-chalet-stone mb-4">Équipements</p>
-            <h2 className="font-display text-3xl md:text-4xl">Un chalet pensé pour les groupes</h2>
+            <p className="text-sm tracking-[0.3em] uppercase text-chalet-stone mb-4">{t("features_label")}</p>
+            <h2 className="font-display text-3xl md:text-4xl">{t("features_title")}</h2>
             <div className="gold-line mx-auto mt-6" />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
@@ -97,8 +120,8 @@ export default function Home() {
       <section className="section-padding bg-cream-dark">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-sm tracking-[0.3em] uppercase text-chalet-stone mb-4">Galerie</p>
-            <h2 className="font-display text-3xl md:text-4xl">Découvrez Le Solerey</h2>
+            <p className="text-sm tracking-[0.3em] uppercase text-chalet-stone mb-4">{t("gallery_label")}</p>
+            <h2 className="font-display text-3xl md:text-4xl">{t("gallery_title")}</h2>
             <div className="gold-line mx-auto mt-6" />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -123,7 +146,7 @@ export default function Home() {
               href="/photos"
               className="inline-flex items-center gap-2 text-sm tracking-widest uppercase text-chalet-wood hover:text-chalet-brown transition-colors"
             >
-              Voir les 25 photos
+              {t("gallery_cta")}
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
@@ -144,24 +167,20 @@ export default function Home() {
             />
           </div>
           <div>
-            <p className="text-sm tracking-[0.3em] uppercase text-chalet-stone mb-4">Depuis 1803</p>
-            <h2 className="font-display text-3xl md:text-4xl mb-6">Notre Histoire</h2>
+            <p className="text-sm tracking-[0.3em] uppercase text-chalet-stone mb-4">{t("history_label")}</p>
+            <h2 className="font-display text-3xl md:text-4xl mb-6">{t("history_title")}</h2>
             <div className="gold-line mb-8" />
             <p className="text-chalet-brown/80 leading-relaxed mb-4">
-              Construit en 1803 par Michel Cachat, Le Solerey était à l&apos;origine une ferme savoyarde
-              au cœur du Lavancher. La pièce centrale au rez-de-chaussée accueillait le bétail,
-              tandis que l&apos;étage était réservé au stockage du foin.
+              {t("history_p1")}
             </p>
             <p className="text-chalet-brown/80 leading-relaxed mb-8">
-              Aujourd&apos;hui entièrement restaurée, cette ferme authentique a conservé ses matériaux
-              d&apos;origine — pierre, bois ancien, poutres apparentes — tout en offrant le confort
-              moderne d&apos;un chalet haut de gamme.
+              {t("history_p2")}
             </p>
             <Link
               href="/histoire"
               className="inline-flex items-center gap-2 text-sm tracking-widest uppercase text-chalet-wood hover:text-chalet-brown transition-colors"
             >
-              En savoir plus
+              {t("history_cta")}
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
@@ -174,43 +193,25 @@ export default function Home() {
       <section className="section-padding bg-chalet-dark text-cream">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-sm tracking-[0.3em] uppercase text-chalet-gold mb-4">Votre séjour</p>
+            <p className="text-sm tracking-[0.3em] uppercase text-chalet-gold mb-4">{t("seo_label")}</p>
             <h2 className="font-display text-3xl md:text-4xl text-cream">
-              Un chalet de 400 m² au pied du Mont-Blanc
+              {t("seo_title")}
             </h2>
             <div className="gold-line mx-auto mt-6" />
           </div>
 
           <div className="space-y-6 text-cream/70 leading-relaxed">
-            <p>
-              Idéalement situé au Lavancher, dans la vallée de Chamonix-Mont-Blanc, Le Solerey offre
-              un cadre exceptionnel pour vos séjours en famille ou entre amis. À 1200 m d&apos;altitude,
-              ensoleillé et dominant la vallée, Le Lavancher offre une vue imprenable sur les aiguilles
-              et le massif du Mont-Blanc.
-            </p>
-            <p>
-              Avec ses 8 chambres, ses 4 salles de bain, ses 3 salons aux ambiances distinctes, son
-              sauna privatif et sa salle de billard, Le Solerey est l&apos;un des rares chalets à Chamonix
-              capable d&apos;accueillir des grands groupes sans compromettre le confort individuel.
-            </p>
-            <p>
-              Depuis le chalet, vous accédez rapidement à toutes les stations de la vallée :
-              Les Houches, Le Brévent, La Flégère, Les Grands Montets à Argentière, et Le Tour.
-              Le bus Chamonix, gratuit avec votre carte d&apos;hôte, dessert l&apos;ensemble du domaine.
-              L&apos;Aiguille du Midi, la Mer de Glace et le tunnel du Mont-Blanc sont à quelques minutes.
-            </p>
-            <p>
-              En hiver, Le Solerey est la base idéale pour un séjour ski à Chamonix. En été, la
-              vallée offre un terrain de jeu exceptionnel pour la randonnée, l&apos;alpinisme, le VTT,
-              le parapente ou simplement la contemplation du massif du Mont-Blanc.
-            </p>
+            <p>{t("seo_p1")}</p>
+            <p>{t("seo_p2")}</p>
+            <p>{t("seo_p3")}</p>
+            <p>{t("seo_p4")}</p>
           </div>
 
           {/* CTA */}
           <div className="text-center mt-12 pt-8 border-t border-cream/10">
-            <h3 className="font-display text-2xl text-cream mb-4">Réservez votre séjour</h3>
+            <h3 className="font-display text-2xl text-cream mb-4">{t("cta_title")}</h3>
             <p className="text-cream/50 mb-6 text-sm">
-              Pour toute demande de réservation, de disponibilité ou d&apos;information
+              {t("cta_subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -223,7 +224,7 @@ export default function Home() {
                 href="mailto:charlotte.desjars@outlook.com?subject=Réservation Le Solerey"
                 className="px-8 py-3.5 bg-chalet-gold text-chalet-dark text-sm font-semibold tracking-widest uppercase hover:bg-chalet-gold/90 transition-colors"
               >
-                Nous contacter
+                {t("cta_contact")}
               </a>
             </div>
           </div>
